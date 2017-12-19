@@ -1,5 +1,5 @@
 //anonymous function
-window.onload = function {
+window.onload = function() {
 
 	//variable declaration
 
@@ -21,6 +21,10 @@ window.onload = function {
 
 	var button = document.getElementById("new");
 	button.addEventListener("click", newGame);
+
+	function newGame() {
+		document.location.reload();
+	}
 
 
 }

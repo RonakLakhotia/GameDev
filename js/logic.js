@@ -63,16 +63,25 @@ window.onload = function() {
 						  break;
 						  
 		}
+		addImage();
 	}
+	function addImage() {
 
-	if (filled[num - 1] == false) {
-
-		if (isGameOver == false) {
-
-			if (turn % 2 == 1) {
-				
+		if (filled[num - 1] == false) {
+			if (isGameOver == false) {
+				if (turn % 2 == 1) {
+				showFirstPlayerMove();
 			}
 		}
 	}
 
 }
+	function showFirstPlayerMove() {
+		crossImage = new Image();
+		crossImage.src = 'image/circle.png';
+		crossImage.onload = function() {
+		ctx.drawImage(crossImage, 0, 0, 120, 120, 0, 0, 120, 120);
+		}
+	}
+}
+

@@ -79,10 +79,25 @@ window.onload = function() {
 			}
 			turn++;
 			filled[num - 1] = true;
+			var isWinner = checkForWinner();
+			if (isWinner == true) {
+				if (symbol[num - 1] == 'X')
+					var player = "First";
+				else {
+					player = "Second";
+				}
+				document.getElementById("result").innerText = player + " Player Won!";
+				isGameOver = true;
+			}
+			if (turn > 9 && isGameOver == false) {
+				document.getElementById("result").innerText = "It is a Draw!";
+			}
 
-			//check for winner
-			checkForWinner();
+		} else {
+			alert("Game is over! Click on new game button to start a new game.");
 		}
+	} else {
+		alert("This box has already been filled!");
 	}
 
 }
@@ -93,12 +108,29 @@ window.onload = function() {
 		ctx.drawImage(crossImage, 0, 0, 120, 120, 0, 0, 120, 120);
 		}
 	}
-		function showSecondPlayerMove() {
+	function showSecondPlayerMove() {
 		crossImage = new Image();
 		crossImage.src = 'image/circle.png';
 		crossImage.onload = function() {
 		ctx.drawImage(crossImage, 0, 0, 120, 120, 0, 0, 120, 120);
 		}
 	}
+	function checkForWinner() {
+
+		var lastSymbol = symbol[num - 1];
+		var isAllFilled = true;
+
+		for (var i = 0; i < 8; ++i) {
+			isAllFilled = true;
+			for (var j = 0; j < 3; ++j) {
+				if (symbol[winner[i][j]] != lastSymbol)
+					isAllFilled = false;
+			}
+			if (isAllFilled == true)
+				return true;
+		}
+		return false;
+	}
+
 }
 

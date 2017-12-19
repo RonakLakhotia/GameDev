@@ -65,4 +65,14 @@ window.onload = function() {
 		}
 	}
 
+	if (filled[num - 1] == false) {
+
+		if (isGameOver == false) {
+
+			if (turn % 2 == 1) {
+				
+			}
+		}
+	}
+
 }

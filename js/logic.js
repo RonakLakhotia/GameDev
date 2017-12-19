@@ -71,12 +71,29 @@ window.onload = function() {
 			if (isGameOver == false) {
 				if (turn % 2 == 1) {
 				showFirstPlayerMove();
+				symbol[num - 1] = 'X';
+
+			} else {
+				showSecondPlayerMove();
+				symbol[num - 1] = 'O';
 			}
+			turn++;
+			filled[num - 1] = true;
+
+			//check for winner
+			checkForWinner();
 		}
 	}
 
 }
 	function showFirstPlayerMove() {
+		crossImage = new Image();
+		crossImage.src = 'image/cross.png';
+		crossImage.onload = function() {
+		ctx.drawImage(crossImage, 0, 0, 120, 120, 0, 0, 120, 120);
+		}
+	}
+		function showSecondPlayerMove() {
 		crossImage = new Image();
 		crossImage.src = 'image/circle.png';
 		crossImage.onload = function() {
